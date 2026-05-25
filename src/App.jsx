@@ -3,6 +3,16 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { useEffect, useState } from 'react';
 import { getAlertas } from './services/api';
+import Layout from './components/Layout';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Clientes from './pages/Clientes';
+import ClienteDetalle from './pages/ClienteDetalle';
+import Seguimiento from './pages/Seguimiento';
+import Alertas from './pages/Alertas';
+import Facturacion from './pages/Facturacion';
+import Reportes from './pages/Reportes';
+import Usuarios from './pages/Usuarios';
 
 function RutaProtegida({ children, soloSupervisor }) {
   const { usuario, cargando } = useAuth();
