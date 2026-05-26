@@ -129,7 +129,11 @@ export default function ClienteDetalle() {
         footer={<><Btn variante="outline" onClick={()=>setModalTramite(false)}>Cancelar</Btn><Btn variante="gold" onClick={guardarTramite} disabled={guardando}>{guardando?'Guardando...':'Crear trámite'}</Btn></>}>
         <div style={{display:'flex',flexDirection:'column',gap:12}}>
           <Campo label="Servicio *">
-            <select style={inputStyle} value={formTramite.servicio_id} onChange={e=>setFormTramite(f=>({...f,servicio_id:e.target.value}))}>
+            <select style={inputStyle} value={formTramite.servicio_id}
+              onChange={e=>{
+                const srv=servicios.find(s=>s.id===parseInt(e.target.value));
+                setFormTramite(f=>({...f,servicio_id:e.target.value,precio:srv?.precio_base||''}));
+              }}>
               <option value="">-- Seleccionar --</option>
               {servicios.map(s=><option key={s.id} value={s.id}>{s.nombre}{s.precio_base?` ($${s.precio_base})`:''}</option>)}
             </select>
